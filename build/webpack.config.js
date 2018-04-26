@@ -27,6 +27,10 @@ const config = {
     publicPath: project.publicPath,
   },
   resolve: {
+    alias: {
+      modules: path.resolve(__dirname, '../src/modules'),
+      components: path.resolve(__dirname, '../src/components'),
+    },
     modules: [
       inProject(project.srcDir),
       'node_modules',
@@ -67,6 +71,7 @@ config.module.rules.push({
             regenerator: true,
           },
         ],
+        ["import", {"libraryName": "antd", "libraryDirectory": "es", "style": "css"}],
         [
           'babel-plugin-transform-object-rest-spread',
           {
@@ -95,6 +100,72 @@ const extractStyles = new ExtractTextPlugin({
   allChunks: true,
   disable: __DEV__,
 })
+
+
+config.module.rules.push({
+  test: /\.(css)$/,
+  exclude: /node_modules/,
+  loader: extractStyles.extract({
+    fallback: 'style-loader',
+    use: [
+      {
+        loader: 'css-loader',
+        options: {
+          modules: true,
+          sourceMap: project.sourcemaps,
+          minimize: {
+            autoprefixer: {
+              add: true,
+              remove: true,
+              browsers: ['last 2 versions'],
+            },
+            discardComments: {
+              removeAll: true,
+            },
+            discardUnused: false,
+            mergeIdents: false,
+            reduceIdents: false,
+            safe: true,
+            sourcemap: project.sourcemaps,
+          },
+        },
+      },
+    ]
+  })
+})
+
+config.module.rules.push({
+  test: /\.(css)$/,
+  exclude: /src/,
+  loader: extractStyles.extract({
+    fallback: 'style-loader',
+    use: [
+      {
+        loader: 'css-loader',
+        options: {
+          modules: false,
+          sourceMap: project.sourcemaps,
+          minimize: {
+            autoprefixer: {
+              add: true,
+              remove: true,
+              browsers: ['last 2 versions'],
+            },
+            discardComments: {
+              removeAll: true,
+            },
+            discardUnused: false,
+            mergeIdents: false,
+            reduceIdents: false,
+            safe: true,
+            sourcemap: project.sourcemaps,
+          },
+        },
+      },
+    ]
+  })
+})
+
 
 config.module.rules.push({
   test: /\.(sass|scss)$/,

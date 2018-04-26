@@ -3,12 +3,17 @@ import thunk from 'redux-thunk'
 import { browserHistory } from 'react-router'
 import makeRootReducer from './reducers'
 import { updateLocation } from './location'
+import createSagaMiddleware from 'redux-saga';
+import rootSagas from '../sagas';
+
 
 const createStore = (initialState = {}) => {
   // ======================================================
   // Middleware Configuration
+  const sagaMiddleware = createSagaMiddleware()
   // ======================================================
-  const middleware = [thunk]
+  const middleware = [sagaMiddleware]
+
 
   // ======================================================
   // Store Enhancers
@@ -44,6 +49,8 @@ const createStore = (initialState = {}) => {
       store.replaceReducer(reducers(store.asyncReducers))
     })
   }
+
+  sagaMiddleware.run(rootSagas)
 
   return store
 }
