@@ -46,11 +46,18 @@ class DataList extends React.PureComponent {
           title="Вы действительно хотите удалить запись?"
           closable={false}
         />
-        <Button>
+        <Button style={{
+          marginBottom: '60px',
+        }}>
           <Link to={this.props.createPath}>Создать</Link>
         </Button>
         <Table
           {...this.props}
+          onRow={(rec) => {
+            return {
+              ...this.props,
+            }
+          }}
           columns={this.props.columns.concat(actions({
           onDelete: (col) => {
             this.setState({
@@ -61,7 +68,7 @@ class DataList extends React.PureComponent {
           viewPath: this.props.viewPath,
           updatePath: this.props.updatePath,
         }))}
-          dataSource={this.props.data}
+          dataSource={this.props.data.map(item => ({ ...item, ...this.props }))}
         />
       </div>
     )

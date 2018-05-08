@@ -1,0 +1,7 @@
+
+{
+  "name": "clear",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./clear.js"
+}

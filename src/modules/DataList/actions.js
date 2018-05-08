@@ -1,5 +1,5 @@
-import * as constants from 'modules/constants';
-import { calculateOffset } from "../utils";
+import * as constants from 'modules/constants'
+import { calculateOffset } from '../utils'
 import * as types from '../News/actionTypes'
 
 export const fetchList = (page, type, url, name) => ({

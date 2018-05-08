@@ -1,0 +1,1 @@
+docker run -p 4010:4010 zvinger/docker-swagger-mock http://swagger.mobsolutions.ru/swagger-tp-admin-v1-3efda.yaml

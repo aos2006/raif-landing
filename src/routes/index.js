@@ -2,20 +2,24 @@
 import CoreLayout from '../layouts/PageLayout/PageLayout'
 import Home from './Home'
 import News from 'modules/News';
-
+import { Router, Reducer, Actions } from 'modules/CrudGenerator';
+import { createReducer } from '../modules/utils';
+import * as types from '../modules/News/actionTypes';
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
+import config from './config';
 
 export const createRoutes = (store) => ({
   path        : '/',
   component   : CoreLayout,
   indexRoute  : Home,
-  childRoutes : [
-    News.routes.list(store),
-    News.routes.create(store),
-    News.routes.update(store),
-  ]
+  childRoutes : config.reduce((acc, item) => {
+    const keys = ['list', 'create', 'update'];
+    keys.forEach(key => acc.push(item[key](store)));
+    return acc;
+  }, []),
 })
+
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically
     using getChildRoutes with the following signature:

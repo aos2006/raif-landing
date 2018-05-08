@@ -65,3 +65,4 @@ const update = (store) => ({
 })
 
 export default { create, list, update }
+

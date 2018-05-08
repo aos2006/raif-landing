@@ -64,3 +64,4 @@ export default createReducer(defaultState, {
   [types.SINGLE_NEWS_REQ]: getSingle,
   [types.SINGLE_NEWS_SUCCESS]: getSingleSuccess,
 });
+
