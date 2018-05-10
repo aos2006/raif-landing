@@ -30,7 +30,7 @@ const Create = ({
     >
       <FormItem
         {...formItemLayout}
-        label="Наименование шаблона"
+        label="Наименование линии"
       >
         <Input
           name="title"

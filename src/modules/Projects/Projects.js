@@ -5,6 +5,7 @@ import { Radio, Form, Select } from 'antd';
 import { connect } from 'react-redux';
 import selectors from './selectors';
 import * as types from './actionTypes';
+import * as actions from './actions';
 
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
@@ -15,21 +16,30 @@ const formItemLayout = {
   wrapperCol: { span: 14 },
 };
 
-const Projects = props => (
-  <div>
-    <FormItem
-      {...formItemLayout}
-      label="Выберите проект"
-    >
-      <Select defaultValue={props.defaultValue} onChange={(val) => props.onChange(val)}>
-        {props.projects.map(item => (
-          <Option value={item.id}>{item.title}</Option>
-        ))}
-      </Select>
-    </FormItem>
-  </div>
-);
+class Projects extends React.PureComponent {
+
+  componentDidMount() {
+    this.props.fetchProjects();
+  }
+
+  render() {
+    return (
+      <div>
+        <FormItem
+          {...formItemLayout}
+          label="Выберите проект"
+        >
+          <Select defaultValue={this.props.defaultValue} onChange={(val) => this.props.onChange(val)}>
+            {this.props.projects.map(item => (
+              <Option value={item.id}>{item.title}</Option>
+            ))}
+          </Select>
+        </FormItem>
+      </div>
+    )
+  }
+}
 
 export default connect(state => ({
   projects: selectors.getList(state[types.NAME]),
-}), null)(Projects);
+}), { fetchProjects: actions.fetchProjects })(Projects);

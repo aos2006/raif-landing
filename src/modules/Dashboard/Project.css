@@ -1,0 +1,12 @@
+.remove {
+  position: absolute;
+  left: 85%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+}
+
+.wrapper {
+  position: relative;
+}

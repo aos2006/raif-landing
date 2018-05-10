@@ -11,6 +11,7 @@ const Create = ({
                   handleSubmit,
                   handleChange,
                   setValues,
+                  setFieldValue,
                   projects,
                   values,
                   errors,
@@ -49,7 +50,19 @@ const Create = ({
         {...formItemLayout}
         label="Загрузиет файл"
       >
-        <Upload>
+        <Upload
+          defaultFileList={values.files.map(file => ({
+            name: file.fileName,
+            id: file.id,
+            url: file.fileUrl,
+          }))}
+          action="http://localhost:4010/file/upload"
+          onChange={data => {
+            if(data.file.response) {
+              setFieldValue('files', values.files.concat(data.file.response))
+            }
+          }}
+        >
           <Button>
             <Icon type="upload"/> Загрузить файл
           </Button>

@@ -34,11 +34,12 @@ export class PageLayout extends React.PureComponent {
               <Menu.Item key="2"><Link to="/contact/list">Контакты</Link></Menu.Item>
               <Menu.Item key="666"><Link to="/roles/list">Роли</Link></Menu.Item>
               <SubMenu title="Widgets">
-                <Menu.Item key="2"><Link to="/gistogram">Гистограмма</Link></Menu.Item>
-                <Menu.Item key="99"><Link to="/diagram">Круговая диаграмма</Link></Menu.Item>
-                <Menu.Item key="98"><Link to="/table">Таблица</Link></Menu.Item>
-                <Menu.Item key="97"><Link to="/tablo">Табло</Link></Menu.Item>
+                <Menu.Item key="2"><Link to="/histogram/list">Гистограмма</Link></Menu.Item>
+                <Menu.Item key="99"><Link to="/roundedDiagram/list">Круговая диаграмма</Link></Menu.Item>
+                <Menu.Item key="98"><Link to="/table/list">Таблица</Link></Menu.Item>
+                <Menu.Item key="97"><Link to="/tablo/list">Табло</Link></Menu.Item>
                 <Menu.Item key="96"><Link to="/spedometr/small">Малый спидометр</Link></Menu.Item>
+                <Menu.Item key="096"><Link to="/spedometr/big">Большой спидометр</Link></Menu.Item>
                 <Menu.Item key="95"><Link to="/kpi">Справочник KPI</Link></Menu.Item>
                 <Menu.Item key="94"><Link to="/lines">Справочник линий</Link></Menu.Item>
                 <Menu.Item key="93"><Link to="/target-params">Настройка целевых показателей</Link></Menu.Item>
@@ -47,9 +48,9 @@ export class PageLayout extends React.PureComponent {
                 <Menu.Item key="01"><Link to="/kpi/list">Kpi</Link></Menu.Item>
                 <Menu.Item key="02"><Link to="/lines/list">Линии</Link></Menu.Item>
                 <Menu.Item key="03"><Link to="/projectActivity/list">Проект/Тип активности/Линия</Link></Menu.Item>
-                <Menu.Item key="04"><Link to="/target/list">Целевые значения</Link></Menu.Item>
+                <Menu.Item key="04"><Link to="/targetIndicator/list">Целевые значения</Link></Menu.Item>
                 <Menu.Item key="05"><Link to="/widgets/list">Виджеты</Link></Menu.Item>
-                <Menu.Item key="06"><Link to="/abbs/list">Абревиатуры</Link></Menu.Item>
+                <Menu.Item key="06"><Link to="/abbreviation/list">Абревиатуры</Link></Menu.Item>
               </SubMenu>
 
             </Menu>
