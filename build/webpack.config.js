@@ -71,7 +71,6 @@ config.module.rules.push({
             regenerator: true,
           },
         ],
-        ["import", {"libraryName": "antd", "libraryDirectory": "es", "style": "css"}],
         [
           'babel-plugin-transform-object-rest-spread',
           {
@@ -130,6 +129,7 @@ config.module.rules.push({
           },
         },
       },
+      { "loader": 'postcss-loader', options: { config: { path: path.resolve(__dirname, './postcss.config.js') } } },
     ]
   })
 })
@@ -162,6 +162,7 @@ config.module.rules.push({
           },
         },
       },
+      { "loader": 'postcss-loader', options: { config: { path: path.resolve(__dirname, './postcss.config.js') } } },
     ]
   })
 })
@@ -193,6 +194,7 @@ config.module.rules.push({
           },
         },
       },
+      { "loader": 'postcss-loader', options: { config: { path: path.resolve(__dirname, './postcss.config.js') } } },
       {
         loader: 'sass-loader',
         options: {
@@ -206,6 +208,27 @@ config.module.rules.push({
   })
 })
 config.plugins.push(extractStyles)
+config.plugins.push(new webpack.ProvidePlugin({
+  '$': 'jquery',
+  'jQuery': 'jquery',
+}))
+config.module.rules.push({
+  test: /\.svg$/,
+  use: [
+    'babel-loader',
+    {
+      loader: "react-svg-loader",
+      options: {
+        svgo: {
+          plugins: [
+            { removeTitle: false }
+          ],
+          floatPrecision: 2
+        }
+      }
+    }
+  ]
+})
 
 // Images
 // ------------------------------------
@@ -216,7 +239,6 @@ config.module.rules.push({
     limit : 8192,
   },
 })
-
 // Fonts
 // ------------------------------------
 ;[
@@ -225,7 +247,7 @@ config.module.rules.push({
   ['otf', 'font/opentype'],
   ['ttf', 'application/octet-stream'],
   ['eot', 'application/vnd.ms-fontobject'],
-  ['svg', 'image/svg+xml'],
+  // ['svg', 'image/svg+xml'],
 ].forEach((font) => {
   const extension = font[0]
   const mimetype = font[1]

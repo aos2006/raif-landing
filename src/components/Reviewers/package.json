@@ -1,0 +1,7 @@
+
+{
+  "name": "Reviewers",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Reviewers.js"
+}

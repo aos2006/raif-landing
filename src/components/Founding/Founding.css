@@ -1,0 +1,45 @@
+.section {
+    padding-bottom: 90px;
+}
+
+.title {
+    margin-bottom: 62px;
+}
+
+.columnTitle {
+    margin-bottom: 30px;
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.column {
+    padding: 45px 20px 45px 45px;
+    lost-column: 6/12 2;
+    background-color: #fff;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+    &:last-child {
+         margin-bottom: 0;
+     }
+}
+
+.icon {
+    margin-right: 26px;
+}
+
+.descr {
+    color: rgb(57, 57, 57);
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px
+}

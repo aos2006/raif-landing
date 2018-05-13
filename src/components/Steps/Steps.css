@@ -1,0 +1,136 @@
+.root {
+
+}
+
+.section {
+    padding-bottom: 152px;
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.left {
+    lost-column: 7/12;
+    margin-right: calc(100% * 1/12 + 30px)!important;
+}
+
+.right {
+    lost-column: 4/12 1;
+    margin-left: -30px;
+    p {
+        margin-bottom: 35px;
+        color: rgb(57, 57, 57);
+        font-family: "Helvetica Neue", sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 26px;
+    }
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.timeline {
+    width: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    &:before {
+         position: absolute;
+         z-index: 1;
+         top: 0;
+         bottom: 0;
+         left: 50%;
+         transform: translateX(-50%);
+         width: 3px;
+         background-color: rgb(255, 215, 0);
+         content: '';
+     }
+}
+
+.step {
+    position: relative;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+    width: 26px;
+    height: 26px;
+    border: 3px solid rgb(255, 215, 0);
+    background-color: rgb(252, 254, 254);
+    margin-bottom: 89px;
+    &:last-child {
+         margin-bottom: 0;
+     }
+     &:nth-child(1),
+     &:nth-child(3),
+     &:nth-child(5) {
+        .descr {
+            left: calc(100% + 52px);
+        }
+      }
+    &:nth-child(2),
+    &:nth-child(4) {
+         .descr {
+             right: calc(100% + 52px);
+             left: auto;
+             header:before {
+                  right: 0;
+                    transform: rotate(-180deg);
+                    left: calc(100% - 10px);
+              }
+         }
+     }
+}
+
+.descr {
+    position: absolute;
+    width: 270px;
+    top: 50%;
+    transform: translateY(-50%);
+    p {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 12px 16px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+        background-color: rgb(249, 249, 249);
+        color: rgb(57, 57, 57);
+        font-family: "Helvetica Neue", sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 26px;
+    }
+    header {
+        position: relative;
+        padding: 0 13px;
+        color: rgb(57, 57, 57);
+        height: 49px;
+        line-height: 49px;
+        font-family: "Helvetica Neue", sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        border-radius: 2px;
+        background-color: rgb(255, 215, 0);
+        &:before {
+             position: absolute;
+             right: calc(100% - 10px);
+             top: 50%;
+             margin-top: -20px;
+             width: 0;
+             height: 0;
+             border-top: 20px solid transparent;
+             border-right: 20px solid rgb(255, 215, 0);
+             border-bottom: 20px solid transparent;
+             content: '';
+         }
+    }
+}
+

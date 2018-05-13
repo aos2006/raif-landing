@@ -23,7 +23,7 @@ function* fetch({ url, params, method = 'get', name = 'NOTHING_TYPE', isMock = f
     console.log(error);
     let data = yield call(getErrorData, error.resp);
     yield put({
-      type: `${type}_fail`,
+      type: `${name}_request_fail`,
       name,
       payload: {
         statusText: error.resp.statusText,

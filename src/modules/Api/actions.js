@@ -5,21 +5,14 @@ const handling = resp => {
   if (resp.status >= 200 && resp.status < 300) {
     return resp;
   }
-  let error = new Error();
+  const error = new Error();
   error.resp = resp;
   throw error;
 };
 
-const parse = json => {
-  try {
-    console.log(json);
-    return json.json();
-  } catch(e) {
-    return null;
-  }
-};
+const parse = json => json.json();
 
-const api = ({ url, params }) => {
+export const api = ({ url, params }) => {
   return fetch(url, {
     ...params,
    body: JSON.stringify(params.body) || null,
@@ -30,8 +23,7 @@ const api = ({ url, params }) => {
     },
   })
     .then(handling)
-    .then(parse)
-    .catch(e => console.log(e))
+    .then(parse);
 }
 
 const parametred = method => ({ url, params }) =>
@@ -47,4 +39,5 @@ export default {
   post: parametred('POST'),
   put: parametred('PUT'),
   delete: parametred('DELETE'),
+  api,
 };

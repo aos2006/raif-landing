@@ -7,17 +7,11 @@ import { createReducer } from '../modules/utils';
 import * as types from '../modules/News/actionTypes';
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
-import config from './config';
 
 export const createRoutes = (store) => ({
   path        : '/',
   component   : CoreLayout,
   indexRoute  : Home,
-  childRoutes : config.reduce((acc, item) => {
-    const keys = ['list', 'create', 'update'];
-    keys.forEach(key => acc.push(item[key](store)));
-    return acc;
-  }, []),
 })
 
 

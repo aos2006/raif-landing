@@ -1,0 +1,128 @@
+.root {
+    position: relative;
+    /*overflow: hidden;*/
+}
+
+.bg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 1;
+    overflow: hidden;
+    svg {
+        transform: translateY(-40%);
+    }
+}
+
+.section {}
+
+.title {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 52px;
+}
+
+.item {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 72px;
+    lost-column: 3/12;
+    margin-right: calc(100% * 1/12 + 30px)!important;
+    /*lost-utility: edit rgb(166, 0, 0);*/
+    &:hover {
+        .drop {
+            opacity: 1;
+            visibility: visible;
+        }
+     }
+    &:nth-child(3),
+    &:nth-child(6) {
+         margin-right: 0!important;
+     }
+     &:nth-child(1),
+     &:nth-child(2),
+     &:nth-child(3) {
+          z-index: 12;
+      }
+}
+
+.list {
+    position: relative;
+    z-index: 2;
+    /*lost-offset: 1/12;*/
+    margin-left: calc(100% * 1/12 - 30px);
+    margin-right: calc(100% * 1/12 - 30px);
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.header {
+    position: relative;
+    z-index: 11;
+    margin-bottom: 22px;
+    &:before {
+         position: absolute;
+         z-index: 11;
+         bottom: 0;
+         right: 0;
+         height: 4px;
+         background-color: rgb(255, 215, 0);
+         width: 160px;
+         content: '';
+     }
+}
+
+.icon {
+    position: relative;
+    z-index: 12;
+    display: inline-block;
+}
+
+.sectionTitle {
+    position: relative;
+    z-index: 11;
+    white-space: nowrap;
+}
+
+.drop {
+    padding-bottom: 40px;
+    padding-top: 147px;
+    padding-left: 60px;
+    padding-right: 30px;
+    transition: opacity .2s linear;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: -22px;
+    right: -67px;
+    left: -34px;
+    z-index: 10;
+    box-shadow: 0 0 20px rgba(176, 186, 197, 0.4);
+    border-radius: 2px;
+    background-color: rgb(255, 255, 255);
+}
+
+.dropItem {
+    position: relative;
+    color: rgb(57, 57, 57);
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px;
+    margin-bottom: 10px;
+    &:last-child {
+         margin-bottom: 0;
+     }
+     &:before {
+          position: absolute;
+          top: 10px;
+          right: calc(100% + 12px);
+          width: 16px;
+          height: 4px;
+          background-color: rgb(255, 215, 0);
+          content: '';
+      }
+}

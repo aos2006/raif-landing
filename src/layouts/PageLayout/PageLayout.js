@@ -3,65 +3,39 @@ import { IndexLink, Link } from 'react-router'
 import PropTypes from 'prop-types'
 import './PageLayout.scss'
 import { connect } from 'react-redux';
-import s from 'antd/dist/antd.css';
-import {Layout, Menu, Breadcrumb, Icon} from 'antd';
 import Projects from 'modules/Projects';
-
-const {SubMenu} = Menu;
-const {Header, Content, Sider} = Layout;
+import Header from 'components/Header';
+import Banner from 'components/Banner';
+import Founding from 'components/Founding';
+import WhatFounding from 'components/WhatFounding';
+import Reviewers from 'components/Reviewers';
+import ForWho from 'components/ForWho';
+import Steps from 'components/Steps';
+import Footer from 'components/Footer';
+import Organizers from 'components/Organizers';
+import Order from 'components/Order';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export class PageLayout extends React.PureComponent {
-  componentDidMount() {
-    this.props.getProjects();
-  }
+
   render() {
     const { children } = this.props;
+
     return (
-      <Layout>
-        <Header className="header">
-
-        </Header>
-        <Layout>
-          <Sider width={200} style={{ background: '#fff' }}>
-            <Menu
-              mode="inline"
-              defaultSelectedKeys={['1']}
-              defaultOpenKeys={['sub1']}
-              style={{ height: '100%', borderRight: 0 }}
-            >
-              <Menu.Item key="1"><Link to="/news/list">Новости</Link></Menu.Item>
-              <Menu.Item key="10"><Link to="/mbr/list">Mbr</Link></Menu.Item>
-              <Menu.Item key="2"><Link to="/contact/list">Контакты</Link></Menu.Item>
-              <Menu.Item key="666"><Link to="/roles/list">Роли</Link></Menu.Item>
-              <SubMenu title="Widgets">
-                <Menu.Item key="2"><Link to="/histogram/list">Гистограмма</Link></Menu.Item>
-                <Menu.Item key="99"><Link to="/roundedDiagram/list">Круговая диаграмма</Link></Menu.Item>
-                <Menu.Item key="98"><Link to="/table/list">Таблица</Link></Menu.Item>
-                <Menu.Item key="97"><Link to="/tablo/list">Табло</Link></Menu.Item>
-                <Menu.Item key="96"><Link to="/spedometr/small">Малый спидометр</Link></Menu.Item>
-                <Menu.Item key="096"><Link to="/spedometr/big">Большой спидометр</Link></Menu.Item>
-                <Menu.Item key="95"><Link to="/kpi">Справочник KPI</Link></Menu.Item>
-                <Menu.Item key="94"><Link to="/lines">Справочник линий</Link></Menu.Item>
-                <Menu.Item key="93"><Link to="/target-params">Настройка целевых показателей</Link></Menu.Item>
-              </SubMenu>
-              <SubMenu title="Справочники">
-                <Menu.Item key="01"><Link to="/kpi/list">Kpi</Link></Menu.Item>
-                <Menu.Item key="02"><Link to="/lines/list">Линии</Link></Menu.Item>
-                <Menu.Item key="03"><Link to="/projectActivity/list">Проект/Тип активности/Линия</Link></Menu.Item>
-                <Menu.Item key="04"><Link to="/targetIndicator/list">Целевые значения</Link></Menu.Item>
-                <Menu.Item key="05"><Link to="/widgets/list">Виджеты</Link></Menu.Item>
-                <Menu.Item key="06"><Link to="/abbreviation/list">Абревиатуры</Link></Menu.Item>
-              </SubMenu>
-
-            </Menu>
-          </Sider>
-          <Layout style={{ padding: '0 24px 24px' }}>
-            <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-              {children}
-            </Content>
-          </Layout>
-        </Layout>
-      </Layout>
+      <div>
+        <ToastContainer autoClose={5000}/>
+        <Header />
+        <Banner />
+        <Founding />
+        <WhatFounding />
+        <ForWho />
+        <Steps />
+        <Reviewers />
+        <Organizers />
+        <Order />
+        <Footer />
+      </div>
     )
   }
 }

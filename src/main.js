@@ -1,7 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import createStore from './store/createStore'
-import './styles/main.scss'
+import './styles/reset.css';
+import './styles/variables.css';
+import './styles/base.css';
+import 'react-select/dist/react-select.css';
 
 // Store Initialization
 // ------------------------------------

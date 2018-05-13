@@ -1,0 +1,97 @@
+.root {
+
+}
+
+.section {
+
+}
+
+.header {
+    margin-bottom: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 75px;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.logo {
+
+}
+
+.title {
+    margin-right: 122px;
+}
+
+.logo {
+    margin-right: 73px;
+    &:last-child {
+         margin-right: 0;
+     }
+}
+
+.section {
+    padding-top: 83px;
+    padding-bottom: 108px;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    &:last-child {
+         margin-bottom: 0;
+     }
+}
+
+.label {
+    lost-column: 2/12;
+    color: rgb(0, 0, 0);
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.carousel {
+    lost-column: 10/12 1;
+    padding-left: 30px;
+}
+
+.controls {
+    margin: 10px 0 10px auto;
+    width: 26px;
+}
+
+.arrow {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 29px;
+    background-color: rgb(0, 0, 0);
+    &:last-child {
+         border-radius: 0 0 2px 2px;
+     }
+     &:first-child {
+          border-radius: 2px 2px 0 0;
+      }
+    svg {
+        fill: rgb(255, 215, 0);
+        stroke: rgb(255, 215, 0);
+    }
+    &:active, &:hover {
+         background-color: rgb(255, 215, 0);
+        svg {
+            fill: #000;
+            stroke: #000;
+        }
+     }
+}
+
+
+
+

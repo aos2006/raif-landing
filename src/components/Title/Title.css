@@ -1,0 +1,30 @@
+.root {
+    color: rgb(0, 0, 0);
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 48px;
+    font-weight: 100;
+}
+
+.center {
+    text-align: center;
+}
+
+.white {
+    color: #fff;
+}
+
+.medium {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 26px;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.small {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+}

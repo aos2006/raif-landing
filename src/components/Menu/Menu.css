@@ -1,0 +1,57 @@
+.root {
+    position: relative;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+
+    &:before {
+         position: absolute;
+         height: 53px;
+         width: 9px;
+         background-color: rgb(255, 215, 0);
+         top: 0;
+         bottom: 0;
+         left: 0;
+         content: '';
+     }
+}
+
+.list {
+    height: 53px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 38px;
+    max-width: 800px;
+}
+.item {
+    font-family: "Helvetica Neue", sans-serif;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px;
+    cursor: pointer;
+    transition: color .2s linear;
+    &:hover {
+         color: rgb(255, 215, 0);
+     }
+}
+
+.active {
+    color: rgb(255, 215, 0);
+}
+
+.button {
+    transition: background-color .2s linear;
+    text-align: center;
+    width: 186px;
+    height: 53px;
+    background-color: rgb(255, 215, 0);
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 53px;
+    cursor: pointer;
+    &:hover {
+         background-color: #000;
+     }
+}
