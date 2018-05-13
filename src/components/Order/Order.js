@@ -248,7 +248,7 @@ class Order extends React.PureComponent {
                       </section>
                     </form>
                     <button type='submit' disabled={isSubmitting} className={s.submit} onClick={handleSubmit}>
-                      {isSubmitting ? <Loader /> : 'Зарегистрироваться'}
+                      {isSubmitting ? <Loader /> : <span>Зарегистрироваться</span>}
                     </button>
                   </div>
 
