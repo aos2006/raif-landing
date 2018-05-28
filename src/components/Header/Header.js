@@ -6,20 +6,42 @@ import s from './Header.css';
 import Logo from 'components/Logo';
 import Container from 'components/Container';
 import Menu from 'components/Menu';
+import Burger from './burger.svg';
 
-const Header = props => (
-  <div className={s.root}>
-    <Container>
-      <div className={s.row}>
-        <div className={s.logo}>
-          <Logo href="https://www.raiffeisen.ru/" />
-        </div>
-        <div className={s.menu}>
-          <Menu/>
-        </div>
+class Header extends React.PureComponent {
+  state = {
+    showMenu: false,
+  }
+  render() {
+    return (
+      <div className={s.root}>
+        <Container>
+          <div className={s.row}>
+            <div className={s.logo}>
+              <Logo href="https://www.raiffeisen.ru/"/>
+            </div>
+            <div className={cx([
+              s.menu,
+              {
+                [s.show]: this.state.showMenu,
+              }
+            ])}>
+              <Menu
+                handleClick={() => this.setState({
+                  showMenu: !this.state.showMenu,
+                })}
+              />
+            </div>
+            <div className={s.burger} onClick={() => this.setState({
+              showMenu: !this.state.showMenu,
+            })}>
+              <Burger width={15} height={10} />
+            </div>
+          </div>
+        </Container>
       </div>
-    </Container>
-  </div>
-);
+    )
+  }
+}
 
 export default Header

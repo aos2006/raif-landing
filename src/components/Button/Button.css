@@ -20,24 +20,34 @@
 
 .decor {
     transition: background-color .2s linear;
-    padding: 20px 11px;
+    padding: 0 11px;
+    line-height: 66px;
     height: 100%;
     background-color: rgb(0, 0, 0);
+    @media(--phone) {
+        line-height: 56px;
+    }
 }
 
 .inner {
     transition: background-color .2s linear;
     height: 100%;
-    line-height: 54px;
+    line-height: 64px;
     padding: 0 40px;
     background-color: rgb(255, 215, 0);
     color: rgb(0, 0, 0);
     font-family: "Helvetica Neue", sans-serif;
     font-size: 14px;
     font-weight: 300;
+    @media(--phone) {
+        line-height: 54px;
+    }
 }
 
 .decor, .inner {
-    height: 54px;
+    height: 64px;
     display: block;
+    @media(--phone) {
+        height: 54px;
+    }
 }

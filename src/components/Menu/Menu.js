@@ -11,18 +11,36 @@ const Menu = props => (
   <div className={s.root}>
     <ul className={s.list}>
       {[
-        { txt: 'Зачем участвовать', onClick: scrollTo('#why') },
-        { txt: 'Что мы ищем', onClick: scrollTo('#founding') },
-        { txt: 'Для кого', onClick: scrollTo('#forWho') },
-        { txt: 'Этапы', onClick: scrollTo('#steps') },
-        { txt: 'Жюри', onClick: scrollTo('#organizers') },
+        { txt: 'Зачем участвовать', onClick: () => {
+            props.handleClick();
+            scrollTo('#why')();
+          } },
+        { txt: 'Что мы ищем', onClick: () => {
+            props.handleClick();
+            scrollTo('#founding')();
+          } },
+        { txt: 'Для кого', onClick: () => {
+            props.handleClick();
+            scrollTo('#forWho')();
+          } },
+        { txt: 'Этапы', onClick: () => {
+            props.handleClick();
+            scrollTo('#steps')()
+          } },
+        { txt: 'Жюри', onClick: () => {
+            props.handleClick();
+            scrollTo('#zury')();
+          } },
       ].map(item => (
         <li className={s.item} onClick={item.onClick}>
           {item.txt}
         </li>
       ))}
       <li
-        onClick={scrollTo('#order')}
+        onClick={() => {
+          props.handleClick();
+          scrollTo('#footer')();
+        }}
         className={cx([
         s.item,
         s.button,

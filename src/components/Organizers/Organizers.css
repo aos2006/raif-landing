@@ -3,7 +3,9 @@
 }
 
 .section {
-
+    @media(--phone) {
+        padding-top: 54px;
+    }
 }
 
 .header {
@@ -12,7 +14,12 @@
     align-items: center;
     justify-content: flex-start;
     padding-bottom: 75px;
+    flex-wrap: wrap;
     border-bottom: 1px solid rgba(0, 0, 0, .1);
+    @media(--phone) {
+        padding-bottom: 53px;
+        margin-bottom: 17px;
+    }
 }
 
 .logo {
@@ -21,6 +28,13 @@
 
 .title {
     margin-right: 122px;
+    @media(--tablet) {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    @media(--phone) {
+        margin-bottom: 38px;
+    }
 }
 
 .logo {
@@ -28,21 +42,41 @@
     &:last-child {
          margin-right: 0;
      }
+     @media(--phone) {
+         width: 100%;
+         margin-bottom: 37px;
+         &:last-child {
+            margin-bottom: 0;
+          }
+     }
 }
 
 .section {
     padding-top: 83px;
-    padding-bottom: 108px;
+    /*padding-bottom: 108px;*/
+    padding-bottom: 60px;
+    @media(--tablet) {
+        padding-bottom: 20px;
+    }
+    @media(--phone) {
+        padding-top: 54px;
+        padding-bottom: 68px;
+    }
 }
 
 .slider {
     display: flex;
+    display: none;
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
 
     &:last-child {
          margin-bottom: 0;
+     }
+     @media(--tablet) {
+         flex-direction: column;
+         align-items: flex-start;
      }
 }
 
@@ -53,16 +87,31 @@
     font-size: 18px;
     font-weight: 700;
     font-style: italic;
+    @media(--tablet) {
+        margin-bottom: 30px;
+    }
+    @media(--phone) {
+        margin-bottom: 42px;
+    }
 }
 
 .carousel {
     lost-column: 10/12 1;
     padding-left: 30px;
+    @media(--tablet) {
+        padding-left: 0;
+        width: 100%;
+    }
 }
 
 .controls {
+    display: none;
     margin: 10px 0 10px auto;
     width: 26px;
+    @media(--phone) {
+        margin-right: -25px;
+        margin-bottom: 0;
+    }
 }
 
 .arrow {
@@ -92,6 +141,23 @@
      }
 }
 
+.dwy {
+    path:not(:first-child) {
+        fill: #000;
+    }
+}
 
+.dwyGray {
+    width: 111px;
+    height: 32px;
+    path {
+        fill: #cbcbcb;
+    }
+}
 
-
+.slideItem {
+    height: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}

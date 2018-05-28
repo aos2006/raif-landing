@@ -21,4 +21,39 @@
     left: calc(100% * 4/12 - 30px);
     position: absolute;
     right: -100%;
+    transition: opacity .2s linear;
+    @media(--tablet) {
+        opacity: 0;
+        visibility: hidden;
+        position: fixed;
+        z-index: 22;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+}
+
+.burger {
+    background-color: #000;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    position: fixed;
+    top: 15px;
+    right: 26px;
+    z-index: 23;
+    display: none;
+    @media(--tablet) {
+        display: flex;
+    }
+}
+
+.show {
+    @media(--tablet) {
+        opacity: 1;
+        visibility: visible;
+    }
 }

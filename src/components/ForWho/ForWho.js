@@ -5,7 +5,8 @@ import cx from 'classnames';
 import s from './ForWho.css';
 import Container from 'components/Container';
 import Section from 'components/Section';
-import Title from '../Title'
+import Title from '../Title';
+import img from './forWho.jpg';
 
 const ForWho = props => (
   <div id="forWho" className={s.root}>
@@ -25,7 +26,7 @@ const ForWho = props => (
           </div>
           <div className={s.right}>
             <div className={s.img}>
-              <img src="https://loremflickr.com/805/430" alt="" width={805} height={430}/>
+              <img src={img} alt="" width={805} height={430} />
             </div>
           </div>
         </div>

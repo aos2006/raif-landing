@@ -4,6 +4,14 @@
 
 .section {
     padding-bottom: 152px;
+    background-image: url('./stepsBg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    @media(--phone) {
+        background-position: 100% 50%;
+        padding-top: 50px;
+        padding-bottom: 88px;
+    }
 }
 
 .row {
@@ -16,11 +24,27 @@
 .left {
     lost-column: 7/12;
     margin-right: calc(100% * 1/12 + 30px)!important;
+    @media(--tablet) {
+        order: 2;
+        width: 100%;
+        margin-right: 0!important;
+    }
+    @media(--phone) {
+        width: 100%!important;
+        margin-right: 0!important;
+    }
 }
 
 .right {
     lost-column: 4/12 1;
     margin-left: -30px;
+    @media(--tablet) {
+        width: 100%;
+        order: 1;
+        margin-bottom: 60px;
+        margin-left: 0;
+    }
+
     p {
         margin-bottom: 35px;
         color: rgb(57, 57, 57);
@@ -28,6 +52,9 @@
         font-size: 16px;
         font-weight: 300;
         line-height: 26px;
+        @media(--phone) {
+            margin-bottom: 37px;
+        }
     }
 }
 
@@ -40,6 +67,9 @@
     margin-left: auto;
     margin-right: auto;
     position: relative;
+    @media(--phone) {
+        width: 100%;
+    }
     &:before {
          position: absolute;
          z-index: 1;
@@ -50,6 +80,9 @@
          width: 3px;
          background-color: rgb(255, 215, 0);
          content: '';
+        @media(--phone) {
+            display: none;
+        }
      }
 }
 
@@ -86,6 +119,13 @@
               }
          }
      }
+    @media(--phone) {
+        border: none;
+        background: transparent;
+        width: 100%;
+        height: auto;
+        margin-bottom: 37px;
+    }
 }
 
 .descr {
@@ -93,6 +133,7 @@
     width: 270px;
     top: 50%;
     transform: translateY(-50%);
+
     p {
         position: absolute;
         top: 100%;
@@ -107,6 +148,9 @@
         font-size: 16px;
         font-weight: 300;
         line-height: 26px;
+        @media(--phone) {
+            position: static;
+        }
     }
     header {
         position: relative;
@@ -131,6 +175,14 @@
              border-bottom: 20px solid transparent;
              content: '';
          }
+    }
+    @media(--phone) {
+        position: static;
+        width: 100%;
+        transform: none;
+        header:before {
+            display: none;
+        }
     }
 }
 

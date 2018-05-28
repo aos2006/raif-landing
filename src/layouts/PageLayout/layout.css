@@ -1,0 +1,9 @@
+.fixedBtn {
+    position: fixed;
+    right: 24px;
+    bottom: 0;
+    z-index: 20;
+    @media(--phone) {
+        display: none;
+    }
+}

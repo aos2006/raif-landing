@@ -14,8 +14,8 @@ module.exports = () => ({
     // https://github.com/postcss/postcss-custom-media
     require('postcss-custom-media')({
       extensions: {
-        '--phone': '(min-width: 315px)',
-        '--tablet': '(min-width: 525px)',
+        '--phone': '(max-width: 650px)',
+        '--tablet': '(max-width: 1150px)',
       }
     }),
     // CSS4 Media Queries, e.g. @media screen and (width >= 500px) and (width <= 1200px) { }

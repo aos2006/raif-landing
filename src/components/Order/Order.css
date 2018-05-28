@@ -1,5 +1,7 @@
 .root {
-
+    .root {
+        overflow: none;
+    }
 }
 
 .form {
@@ -11,11 +13,23 @@
     box-shadow: 0 0 20px rgba(176, 186, 197, 0.4);
     border-radius: 2px;
     background-color: rgb(255, 255, 255);
+    @media(--tablet) {
+        width: calc(100% * 8/12);
+    }
+    @media(--phone) {
+        width: 100%!important;
+
+        padding-left: 18px;
+        padding-right: 18px;
+    }
 }
 
 .section {
     padding-top: 0;
     padding-bottom: 108px;
+    @media(--phone) {
+        padding-bottom: 85px;
+    }
 }
 
 .row {
@@ -113,9 +127,20 @@
     height: 54px;
     border-radius: 0 0 2px 2px;
     background-color: rgb(0, 0, 0);
+    span {
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
     &:hover {
          background-color: rgba(0, 0, 0, .8);
      }
+     @media(--tablet) {
+         width: calc(100% * 8/12);
+     }
+    @media(--phone) {
+        width: 100%;
+    }
 }
 
 .tooltipContainer {
@@ -130,6 +155,7 @@
     font-family: 'Helvetica Neue', sans-serif;
     color: #fff;
     position: absolute;
+    z-index: 12;
     left: calc(100% + 10px);
     top: 50%;
     transform: translateY(-50%);
@@ -146,6 +172,11 @@
          border-top: 5px solid transparent;
          border-right: 5px solid red;
          border-bottom: 5px solid transparent;
+     }
+     @media(--phone) {
+         left: 80%;
+
+
      }
 }
 

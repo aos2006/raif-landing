@@ -1,5 +1,8 @@
 .root {
     padding-top: 80px;
+    @media(--phone) {
+        padding-top: 30px;
+    }
 }
 
 .yellow {

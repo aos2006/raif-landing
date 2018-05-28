@@ -15,6 +15,39 @@ import Sol from './icons/solutions.svg';
 import Raketa from './icons/raketa.svg';
 import Bg from './bg.svg';
 
+const toggle = Component => class ToggleActive extends React.PureComponent {
+  constructor (props) {
+    super();
+    this.state = {
+      activeItem: props.defaultActiveItem ? props.defaultActiveItem : null,
+    };
+  }
+
+  render () {
+    return (<Component
+      {...this.props}
+      {...this.state}
+      toggleActive={this.toggleActive}
+      getActive={this.getActive}
+      setActive={this.setActive}
+    />);
+  }
+
+  toggleActive = (id) => {
+    this.setState({
+      activeItem: id === this.state.activeItem ? null : id,
+    });
+  }
+
+  getActive = id => this.state.activeItem === id
+
+  setActive = (id) => {
+    this.setState({
+      activeItem: id,
+    });
+  }
+};
+
 const WhatFounding = props => (
   <div
     id="founding"
@@ -25,13 +58,15 @@ const WhatFounding = props => (
       <Bg />
     </div>
     <Section type="white" classes={{ root: s.section }}>
-      <Container>
+      <Container noHidden>
         <Title center classes={{ root: s.title }}>
           Что мы ищем?
         </Title>
         <ul className={s.list}>
           {props.list.map((item, index) => (
             <Item
+              toggleActive={() => props.toggleActive(index)}
+              isActive={props.getActive(index)}
               index={index + 1}
               {...item}
             />
@@ -46,71 +81,66 @@ WhatFounding.defaultProps = {
   list: [
     {
       icon: <Bank/>,
-      title: 'RegTech',
+      title: <span>Регуляторные<br/>технологии</span>,
       list: [
-          { txt: 'Трансформация филиальной сети' },
-          { txt: 'Трансформация филиальной сети' },
-          { txt: 'Трансформация филиальной сети' },
-          { txt: 'Трансформация филиальной сети' },
-          { txt: 'Трансформация филиальной сети' },
+          { txt: 'AML & KYC решения (вкл. блокчейн)' },
+          { txt: 'Цифровая Идентификация (вкл. блокчейн)' },
+          { txt: 'Управление данными и их защита' },
+          { txt: 'Кибербезопасность' },
+          { txt: 'Извлечение информации из текстов' },
         ],
     },
     {
       icon: <Trading />,
-      title: 'Investment Trading',
+      title: <span>Инвестирование<br/>и трейдинг</span>,
       list: [
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
+        { txt: 'Гибридные/цифровые помощники' },
+        { txt: 'Умные Контракты (блокчейн)' },
+        { txt: 'Обработка добровольных корпоративных действий' },
+        { txt: 'Блокчейн для инвестиций на финансовых рынках' },
       ],
     },
     {
       icon: <Anl/>,
-      title: 'Advanced Analytics',
+      title: 'Продвинутая аналитика',
       list: [
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
+        { txt: 'Расширенный кредитный скоринг' },
+        { txt: 'Предиктивная аналитика' },
+        { txt: 'Кредитование МСБ' },
+        { txt: 'Клиентская и торговая аналитика' },
+        { txt: 'Искусственный интеллект (Включая обработку естественного языка)' },
+        { txt: 'Аналитика клиентского опыта' },
       ],
     },
     {
       icon: <House/>,
-      title: 'Non-banking Services',
+      title: 'Небанковские сервисы',
       list: [
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
+        { txt: 'Дополнительные сервисы для сегментов Ритейл & МСБ' },
+        { txt: 'Новые цепочки создания стоимости на данных банка' },
+        { txt: 'Новые сервисы, требующие банковских интерфейсов (Open API)' },
       ],
     },
     {
       icon: <Sol/>,
-      title: <span>Corporate Business<br/>Solutions</span>,
+      title: <span>Корпоративный бизнес</span>,
       list: [
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
+        { txt: 'Блокчейн для торгового финансирования' },
+        { txt: 'Решения в области ценообразования' },
+        { txt: 'Электронный документооборот/OCR' },
+        { txt: 'Роботизированные технологии для FX торговли' },
       ],
     },
     {
-      icon: <Raketa width={30} height={30}/>,
-      title: <span>Customer Experience<br/>and Services
-</span>,
+      icon: <Raketa />,
+      title: <span>Клиентский опыт<br/>и обслуживание</span>,
       list: [
         { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
-        { txt: 'Трансформация филиальной сети' },
+        { txt: 'Дополненная или виртуальная реальность' },
+        { txt: 'Технологии удаленного обслуживания' },
+        { txt: 'Голосовые интерфейсы' },
       ],
     }
   ]
 }
-export default WhatFounding
+export default toggle(WhatFounding);

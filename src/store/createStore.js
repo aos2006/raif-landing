@@ -1,18 +1,14 @@
 import { applyMiddleware, compose, createStore as createReduxStore } from 'redux'
-import thunk from 'redux-thunk'
 import { browserHistory } from 'react-router'
 import makeRootReducer from './reducers'
 import { updateLocation } from './location'
-import createSagaMiddleware from 'redux-saga';
-import rootSagas from '../sagas';
 
 
 const createStore = (initialState = {}) => {
   // ======================================================
   // Middleware Configuration
-  const sagaMiddleware = createSagaMiddleware()
   // ======================================================
-  const middleware = [sagaMiddleware]
+  const middleware = []
 
 
   // ======================================================
@@ -50,7 +46,6 @@ const createStore = (initialState = {}) => {
     })
   }
 
-  sagaMiddleware.run(rootSagas)
 
   return store
 }

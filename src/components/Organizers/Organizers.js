@@ -6,7 +6,7 @@ import s from './Organizers.css';
 import Title from 'components/Title';
 import Section from 'components/Section';
 import Container from 'components/Container';
-import Dwy from './dwy.svg';
+import Dwy from 'components/Logo/dwy.svg';
 import Raif from './raif.svg';
 import Carousel from 'nuka-carousel';
 import DwyGray from './dwyGray.svg';
@@ -16,6 +16,15 @@ import Right from './right.svg';
 class Organizers extends React.PureComponent {
   state = {
     slideIndex: 0,
+    slidesToShow: 5
+  }
+
+  componentDidMount() {
+    if($('body, html').width() <= 650) {
+      this.setState({
+        slidesToShow: 2,
+      })
+    }
   }
 
   render() {
@@ -28,11 +37,11 @@ class Organizers extends React.PureComponent {
                 <Title classes={{ root: s.title }}>
                   Организаторы
                 </Title>
-                <a href="" className={s.logo}>
+                <a href="https://www.raiffeisen.ru/" target="_blank" className={s.logo}>
                   <Raif/>
                 </a>
-                <a href="" className={s.logo}>
-                  <Dwy/>
+                <a href="https://www.deworkacy.ru/corporateinnovations" target="_blank" className={s.logo}>
+                  <Dwy className={s.dwy} />
                 </a>
               </header>
               <section className={s.slider}>
@@ -40,7 +49,7 @@ class Organizers extends React.PureComponent {
                   Партнеры
                 </h4>
                 <div className={s.carousel}>
-                  <Carousel slidesToShow={5}
+                  <Carousel slidesToShow={this.state.slidesToShow}
                             slideIndex={this.state.slideIndex}
                             slidesToScroll={1}
                             renderTopCenterControls={({ currentSlide }) => null}
@@ -48,21 +57,12 @@ class Organizers extends React.PureComponent {
                             renderCenterRightControls={({ nextSlide }) => null}
                             renderBottomCenterControls={() => null}
                   >
-                    <div>
-                      <DwyGray/>
-                    </div>
-                    <div>
-                      <DwyGray/>
-                    </div>
-                    <div>
-                      <DwyGray/>
-                    </div>
-                    <div>
-                      <DwyGray/>
-                    </div>
-                    <div>
-                      <DwyGray/>
-                    </div>
+
+                    {[1,2,3,4,5].map(item => (
+                      <div className={s.slideItem}>
+                        <Dwy className={s.dwyGray}/>
+                      </div>
+                    ))}
                   </Carousel>
                 </div>
               </section>
@@ -84,7 +84,7 @@ class Organizers extends React.PureComponent {
                   партнеры
                 </h4>
                 <div className={s.carousel}>
-                  <Carousel slidesToShow={5}
+                  <Carousel slidesToShow={this.state.slidesToShow}
                             slideIndex={this.state.slideIndex}
                             slidesToScroll={1}
                             renderTopCenterControls={({ currentSlide }) => null}
@@ -92,21 +92,12 @@ class Organizers extends React.PureComponent {
                             renderCenterRightControls={({ nextSlide }) => null}
                             renderBottomCenterControls={() => null}
                   >
-                    <div>
-                      <DwyGray/>
-                    </div>
-                    <div>
-                      <DwyGray/>
-                    </div>
-                    <div>
-                      <DwyGray/>
-                    </div>
-                    <div>
-                      <DwyGray/>
-                    </div>
-                    <div>
-                      <DwyGray/>
-                    </div>
+
+                    {[1, 2, 3, 4, 5].map(item => (
+                      <div className={s.slideItem}>
+                        <Dwy className={s.dwyGray}/>
+                      </div>
+                    ))}
                   </Carousel>
                 </div>
               </section>

@@ -1,9 +1,7 @@
 import React from 'react'
-import { IndexLink, Link } from 'react-router'
 import PropTypes from 'prop-types'
 import './PageLayout.scss'
 import { connect } from 'react-redux';
-import Projects from 'modules/Projects';
 import Header from 'components/Header';
 import Banner from 'components/Banner';
 import Founding from 'components/Founding';
@@ -16,6 +14,8 @@ import Organizers from 'components/Organizers';
 import Order from 'components/Order';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Button from 'components/Button';
+import s from './layout.css';
 
 export class PageLayout extends React.PureComponent {
 
@@ -24,6 +24,13 @@ export class PageLayout extends React.PureComponent {
 
     return (
       <div>
+        {/*<Button*/}
+          {/*classes={{ root: s.fixedBtn }}*/}
+          {/*onClick={() => $('html, body').animate({*/}
+          {/*scrollTop: $('#order').position().top,*/}
+        {/*})}>*/}
+          {/*Подать заявку*/}
+        {/*</Button>*/}
         <ToastContainer autoClose={5000}/>
         <Header />
         <Banner />
@@ -43,4 +50,4 @@ PageLayout.propTypes = {
   children: PropTypes.node,
 }
 
-export default connect(null, { getProjects: Projects.actions.fetchProjects })(PageLayout)
+export default PageLayout;

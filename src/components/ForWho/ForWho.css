@@ -3,12 +3,19 @@
 
 .section {
     padding-bottom: 72px;
+    @media(--phone) {
+        padding-bottom: 42px;
+    }
 }
 
 .title {
     margin-bottom: 27px;
     margin-top: 28px;
     line-height: 56px;
+    @media(--phone) {
+        margin-bottom: 21px;
+        margin-top: 0;
+    }
 }
 
 .row {
@@ -29,6 +36,12 @@
 .left {
     lost-column: 4/12;
     margin-right: calc(100% * 1/12 + 30px)!important;
+    @media(--phone) {
+        width: 100%;
+    }
+    @media(--phone) {
+        order: 2;
+    }
 
 }
 
@@ -43,7 +56,15 @@
          height: 12px;
          background-color: rgb(242, 179, 0);
          content: '';
+        @media(--tablet) {
+            display: none;
+        }
      }
+    @media (--phone) {
+        order: 1;
+        width: 100%;
+        margin-bottom: 25px;
+    }
 }
 
 .img {

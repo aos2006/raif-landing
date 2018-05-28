@@ -15,6 +15,14 @@ import Validator from 'modules/Validator'
 import Loader from './loader.svg'
 import Api from 'modules/Api';
 import { toast } from 'react-toastify';
+import PhoneMask from "inputmask/dist/inputmask/inputmask.phone.extensions";
+import EmailMask from 'inputmask'
+import 'inputmask/dist/inputmask/phone-codes/phone-ru.js'
+import { Upload, Button, Icon, Checkbox } from 'antd';
+import 'antd/lib/upload/style/index.css';
+import 'antd/lib/button/style/index.css';
+import 'antd/lib/checkbox/style/index.css';
+
 
 const schema = Validator.object().shape({
   fio: Validator.string().required('Обязательное поле'),
@@ -25,8 +33,9 @@ const schema = Validator.object().shape({
   projectState: Validator.string().required('Обязательное поле'),
   projectVector: Validator.string().required('Обязательное поле'),
   presentation: Validator.string().url('Некорректный url').required('Обязательное поле'),
-  additionalLink: Validator.string().url('Некорректный url').required('Обязательное поле')
-
+  additionalLink: Validator.string().url('Некорректный url').required('Обязательное поле'),
+  files: Validator.array().required('Файл обязателен'),
+  rulesAccept: Validator.boolean().oneOf([true], 'Необходимо согласиться'),
 })
 
 const Tooltiped = Component => class Tooptip extends React.PureComponent {
@@ -55,17 +64,25 @@ const Area = props => <textarea {...props} />
 const TooltipedInput = Tooltiped(Input)
 const TooltipedSelect = Tooltiped(Select)
 const TooltipedArea = Tooltiped(Area)
+const TooltipedButton = Tooltiped(Button)
+const TooltipedCheckbox = Tooltiped(Checkbox);
 
 class Order extends React.PureComponent {
+  componentDidMount() {
+  	  const mskPhone = new PhoneMask('phoneru');
+    const mskEmail = new EmailMask('email');
+  	 mskPhone.mask(document.getElementById('phone'));
+  	 mskEmail.mask(document.getElementById('email'))
+  }
   render () {
     return (
       <div className={s.root} id='order'>
         <Section classes={{ root: s.section }}>
-          <Container>
+          <Container noHidden>
             <Formik
-              // validationSchema={schema}
+              validationSchema={schema}
               onSubmit={(values,
-                         { setSubmitting, setErrors, ...rest }) => {
+                         { setSubmitting, setErrors, resetForm }) => {
                 Api.actions.api({ url: 'http://api.deworkacy.ru/api/dwy/form/business-form/raif',
                   params: {
                     method: 'post',
@@ -80,12 +97,15 @@ class Order extends React.PureComponent {
                       shortDescription: values.descr,
                       presentationFile: values.presentation,
                       additionalAttachments: values.additionalLink,
+                      files: values.files,
                     }
                   } })
                  .then(data => {
                    toast.success('Заявка успешно отправлена', {
                      position: toast.POSITION_TOP_RIGHT,
                    });
+                   setSubmitting(false);
+                   resetForm();
                  })
                  .catch(err => {
                    setSubmitting(false);
@@ -105,6 +125,8 @@ class Order extends React.PureComponent {
                 descr: '',
                 presentation: '',
                 additionalLink: '',
+                files: [],
+                rulesAccept: false,
               }}
               render={({
                          values,
@@ -137,6 +159,7 @@ class Order extends React.PureComponent {
                           value={values.fio}
                         />
                         <TooltipedInput
+                          id="email"
                           error={errors.email}
                           show={errors.email}
                           className={s.input}
@@ -146,6 +169,7 @@ class Order extends React.PureComponent {
                           value={values.email}
                         />
                         <TooltipedInput
+                          id="phone"
                           show={errors.phone}
                           error={errors.phone}
                           name='phone'
@@ -236,6 +260,21 @@ class Order extends React.PureComponent {
                           className={s.input}
                           value={values.presentation}
                         />
+                        <Upload
+                          action="http://api.deworkacy.ru/fileStorage/upload/file"
+                          onChange={data => {
+                            if (data.file.response) {
+                              setFieldValue('files', values.files.concat(data.file.response.fileStorageElement.id))
+                            }
+                          }}
+                        >
+                          <TooltipedButton
+                            error={errors.files}
+                            show={errors.files}
+                          >
+                            <Icon type="upload"/> Загрузить презентацию
+                          </TooltipedButton>
+                        </Upload>
                         <TooltipedInput
                           show={errors.additionalLink}
                           error={errors.additionalLink}
@@ -245,6 +284,16 @@ class Order extends React.PureComponent {
                           className={s.input}
                           value={values.additionalLink}
                         />
+                        <TooltipedCheckbox
+                          value={values.rulesAccept}
+                          onChange={ev => {
+                            setFieldValue('rulesAccept', !values.rulesAccept)
+                          }}
+                          show={errors.rulesAccept}
+                          error={errors.rulesAccept}
+                        >
+                          <a href="/инормация для участия.pdf" target="_blank">Согласен с правилами участия</a>
+                        </TooltipedCheckbox>
                       </section>
                     </form>
                     <button type='submit' disabled={isSubmitting} className={s.submit} onClick={handleSubmit}>
