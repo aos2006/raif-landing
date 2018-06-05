@@ -61,11 +61,6 @@ config.module.rules.push({
     query: {
       cacheDirectory: true,
       plugins: [
-        ["env", {
-          "targets": {
-            "browsers": ["last 2 versions", "ie >= 11"]
-          }
-        }],
         ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }], // `style: true` for less
         'babel-plugin-transform-class-properties',
         'babel-plugin-syntax-dynamic-import',
@@ -85,6 +80,11 @@ config.module.rules.push({
         ],
       ],
       presets: [
+        ["env", {
+          "targets": {
+            "browsers": ["last 2 versions", "ie >= 11"]
+          }
+        }],
         'babel-preset-react',
         ['babel-preset-env', {
           modules: false,
