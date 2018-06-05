@@ -33,7 +33,6 @@ const schema = Validator.object().shape({
   projectState: Validator.string().required('Обязательное поле'),
   projectVector: Validator.string().required('Обязательное поле'),
   presentation: Validator.string().url('Некорректный url').required('Обязательное поле'),
-  additionalLink: Validator.string().url('Некорректный url').required('Обязательное поле'),
   files: Validator.array().required('Файл обязателен'),
   rulesAccept: Validator.boolean().oneOf([true], 'Необходимо согласиться'),
 })

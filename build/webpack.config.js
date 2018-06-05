@@ -82,11 +82,18 @@ config.module.rules.push({
       presets: [
         ["env", {
           "targets": {
-            "browsers": ["last 2 versions", "ie >= 11"]
-          }
+            "browsers": [
+              "Chrome >= 59",
+              "FireFox >= 44",
+              "Safari >= 7",
+              "Explorer 11",
+              "last 4 Edge versions"
+            ]
+          },
+          "useBuiltIns": true
         }],
-        'es2015',
-        'babel-preset-react',
+        "react",
+        "stage-1"
       ]
     },
   }],
