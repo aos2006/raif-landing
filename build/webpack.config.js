@@ -61,6 +61,9 @@ config.module.rules.push({
     query: {
       cacheDirectory: true,
       plugins: [
+        "transform-es2015-arrow-functions",
+        "transform-class-properties",
+        "syntax-class-properties",
         ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }], // `style: true` for less
         'babel-plugin-transform-class-properties',
         'babel-plugin-syntax-dynamic-import',
