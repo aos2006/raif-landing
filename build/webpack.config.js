@@ -80,16 +80,11 @@ config.module.rules.push({
         ],
       ],
       presets: [
-        ["env", {
-          "targets": {
-            "browsers": ["last 2 versions", "ie >= 11"]
-          }
-        }],
         'babel-preset-react',
         ['babel-preset-env', {
           modules: false,
           targets: {
-            ie9: true,
+            "browsers": ["last 2 versions", "ie >= 11"]
           },
           uglify: true,
         }],
