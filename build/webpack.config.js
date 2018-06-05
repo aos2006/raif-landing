@@ -80,12 +80,13 @@ config.module.rules.push({
         ],
       ],
       presets: [
-        'babel-preset-react',
         ["env", {
           "targets": {
             "browsers": ["last 2 versions", "ie >= 11"]
           }
         }],
+        'es2015',
+        'babel-preset-react',
       ]
     },
   }],
