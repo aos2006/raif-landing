@@ -21,13 +21,16 @@ const Footer = props => (
           <h3 className={s.title}>
             Оператор скаутинга:
           </h3>
-          <Logo href="https://www.deworkacy.ru/corporateinnovations">
+          <Logo href="https://www.deworkacy.ru/corporateinnovations" onClick={ev => yaCounter49129816.reachGoal('dwy_logo_click')}>
             <Dwy />
           </Logo>
         </section>
         <section className={s.rules}>
-          <a href="/инормация для участия.pdf" className={s.rulesLink}>
+          <a href="/инормация для участия.pdf" className={s.rulesLink} target="_blank">
             Правила участия в конкурсе
+          </a>
+          <a href="/sogl_dlya_posetiteley_saita.pdf" className={s.rulesLink} target="_blank">
+            Согласие на обработку персональных данных
           </a>
         </section>
         <section className={s.socials}>
@@ -36,17 +39,17 @@ const Footer = props => (
           </h3>
           <ul className={s.socialList}>
             <li className={s.socialItem}>
-              <a href="https://www.facebook.com/Deworkacy" target="_blank">
+              <a href="https://www.facebook.com/Deworkacy" target="_blank" onClick={ev => yaCounter49129816.reachGoal('fb_click')}>
                 <Fb/>
               </a>
             </li>
             <li className={s.socialItem}>
-              <a href="https://vk.com/deworkacy" target="_blank">
+              <a href="https://vk.com/deworkacy" target="_blank" onClick={ev => yaCounter49129816.reachGoal('vk_click')}>
                 <Vk/>
               </a>
             </li>
             <li className={s.socialItem}>
-              <a href="https://www.instagram.com/deworkacy/" target="_blank">
+              <a href="https://www.instagram.com/deworkacy/" target="_blank" onClick={ev => yaCounter49129816.reachGoal('inst_click')}>
                 <Inst/>
               </a>
             </li>
@@ -58,10 +61,10 @@ const Footer = props => (
           </h3>
           <p className={s.infoTxt}>
             <div className={s.infoRow}>
-              <a href="mailto: ptebenkov@deworkacy.ru" className={s.email}>
+              <a href="mailto: ptebenkov@deworkacy.ru" className={s.email} onClick={ev => yaCounter49129816.reachGoal('mail_click')}>
                 <Email width={20} height={20}/>
               </a>
-              <a href="tel:89998419419" className={s.phone}>
+              <a href="tel:89998419419" className={s.phone} onClick={ev => yaCounter49129816.reachGoal('phone_click')}>
                 <Phone width={20} height={20}/>
               </a>
             </div>

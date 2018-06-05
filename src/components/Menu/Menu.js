@@ -40,6 +40,7 @@ const Menu = props => (
         onClick={() => {
           props.handleClick();
           scrollTo('#footer')();
+          yaCounter49129816.reachGoal('callback_menu_click');
         }}
         className={cx([
         s.item,

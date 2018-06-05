@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const project = require('../project.config')
-
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const inProject = path.resolve.bind(path, project.basePath)
 const inProjectSrc = (file) => inProject(project.srcDir, file)
 
@@ -61,6 +61,7 @@ config.module.rules.push({
     query: {
       cacheDirectory: true,
       plugins: [
+        ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }], // `style: true` for less
         'babel-plugin-transform-class-properties',
         'babel-plugin-syntax-dynamic-import',
         [
@@ -233,7 +234,7 @@ config.module.rules.push({
 // Images
 // ------------------------------------
 config.module.rules.push({
-  test    : /\.(png|jpg|gif)$/,
+  test    : /\.(png|jpg|gif|pdf)$/,
   loader  : 'url-loader',
   options : {
     limit : 8192,
@@ -305,21 +306,30 @@ if (__PROD__) {
       minimize: true,
       debug: false,
     }),
-    new webpack.optimize.UglifyJsPlugin({
+    new UglifyJsPlugin({
       sourceMap: !!config.devtool,
-      comments: false,
-      compress: {
+
+      uglifyOptions: {
+        compress: {
+          arrows: true,
+          dead_code: true,
+          booleans: true,
+          collapse_vars: true,
+          comparisons: true,
+          computed_props: true,
+          conditionals: true,
+          drop_console: true,
+          drop_debugger: true,
+          ecma: 6,
+        },
         warnings: false,
-        screw_ie8: true,
-        conditionals: true,
-        unused: true,
-        comparisons: true,
-        sequences: true,
-        dead_code: true,
-        evaluate: true,
-        if_return: true,
-        join_vars: true,
-      },
+        toplevel: false,
+        nameCache: null,
+        ie8: false,
+        keep_classnames: undefined,
+        keep_fnames: false,
+        safari10: false,
+      }
     })
   )
 }

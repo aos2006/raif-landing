@@ -6,7 +6,7 @@ import s from './Logo.css';
 import Icon from './logo.svg';
 
 const Logo = props => (
-  <a href={props.href} target="_blank">
+  <a href={props.href} target="_blank" {...props}>
     {props.children || <Icon />}
   </a>
 );

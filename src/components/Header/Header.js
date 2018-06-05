@@ -17,8 +17,8 @@ class Header extends React.PureComponent {
       <div className={s.root}>
         <Container>
           <div className={s.row}>
-            <div className={s.logo}>
-              <Logo href="https://www.raiffeisen.ru/"/>
+            <div className={s.logo} onClick={ev => yaCounter49129816.reachGoal('raif_logo_click')}>
+              <Logo href="https://www.raiffeisen.ru/" />
             </div>
             <div className={cx([
               s.menu,

@@ -33,7 +33,8 @@ const toggle = Component => class ToggleActive extends React.PureComponent {
     />);
   }
 
-  toggleActive = (id) => {
+  toggleActive = (id, metricEvent) => {
+    yaCounter49129816.reachGoal(metricEvent);
     this.setState({
       activeItem: id === this.state.activeItem ? null : id,
     });
@@ -65,7 +66,7 @@ const WhatFounding = props => (
         <ul className={s.list}>
           {props.list.map((item, index) => (
             <Item
-              toggleActive={() => props.toggleActive(index)}
+              toggleActive={() => props.toggleActive(index, item.metric)}
               isActive={props.getActive(index)}
               index={index + 1}
               {...item}
@@ -81,6 +82,7 @@ WhatFounding.defaultProps = {
   list: [
     {
       icon: <Bank/>,
+      metric: 'what_founding_techs',
       title: <span>Регуляторные<br/>технологии</span>,
       list: [
           { txt: 'AML & KYC решения (вкл. блокчейн)' },
@@ -92,6 +94,7 @@ WhatFounding.defaultProps = {
     },
     {
       icon: <Trading />,
+      metric: 'what_founding_trading',
       title: <span>Инвестирование<br/>и трейдинг</span>,
       list: [
         { txt: 'Гибридные/цифровые помощники' },
@@ -102,6 +105,7 @@ WhatFounding.defaultProps = {
     },
     {
       icon: <Anl/>,
+      metric: 'what_founding_analytics',
       title: 'Продвинутая аналитика',
       list: [
         { txt: 'Расширенный кредитный скоринг' },
@@ -114,6 +118,7 @@ WhatFounding.defaultProps = {
     },
     {
       icon: <House/>,
+      metric: 'what_founding_nonebanking',
       title: 'Небанковские сервисы',
       list: [
         { txt: 'Дополнительные сервисы для сегментов Ритейл & МСБ' },
@@ -123,6 +128,7 @@ WhatFounding.defaultProps = {
     },
     {
       icon: <Sol/>,
+      metric: 'what_founding_corporate',
       title: <span>Корпоративный бизнес</span>,
       list: [
         { txt: 'Блокчейн для торгового финансирования' },
@@ -133,6 +139,7 @@ WhatFounding.defaultProps = {
     },
     {
       icon: <Raketa />,
+      metric: 'what_founding_client_exp',
       title: <span>Клиентский опыт<br/>и обслуживание</span>,
       list: [
         { txt: 'Трансформация филиальной сети' },

@@ -31,6 +31,7 @@
     lost-column: 2/12;
     lost-offset: 1/12;
     a {
+        display: block;
         white-space: nowrap;
         color: rgb(255, 215, 0);
         font-family: "Helvetica Neue", sans-serif;

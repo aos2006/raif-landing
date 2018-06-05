@@ -106,12 +106,14 @@ class Order extends React.PureComponent {
                    });
                    setSubmitting(false);
                    resetForm();
+                   yaCounter49129816.reachGoal('order_submit_success');
                  })
                  .catch(err => {
                    setSubmitting(false);
                    toast.error('Произошла ошибка, свяжитесь с нами', {
                      position: toast.POSITION_TOP_RIGHT,
                    });
+                   yaCounter49129816.reachGoal('order_submit_fail');
                  })
               }}
               initialValues={{
@@ -292,7 +294,7 @@ class Order extends React.PureComponent {
                           show={errors.rulesAccept}
                           error={errors.rulesAccept}
                         >
-                          <a href="/инормация для участия.pdf" target="_blank">Согласен с правилами участия</a>
+                          <a href="/инормация для участия.pdf" target="_blank">Согласен с правилами участия</a> и <a href="/sogl_dlya_posetiteley_saita.pdf">обработкой персональных данных</a>
                         </TooltipedCheckbox>
                       </section>
                     </form>

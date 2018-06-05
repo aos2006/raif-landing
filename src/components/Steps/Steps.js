@@ -47,9 +47,12 @@ const Steps = props => (
              презентуют свои бизнес кейсы, и по результатам очных выступлений будет выбран локальный победитель и
              номинант на участие в финале международного конкурса.
            </p>
-           <Button classes={{ root: s.button }} onClick={() => $('body, html').animate({
-             scrollTop: $('#order').position().top,
-           }, 1000)}>
+           <Button classes={{ root: s.button }} onClick={() => {
+             $('body, html').animate({
+               scrollTop: $('#order').position().top,
+             }, 1000);
+             yaCounter49129816.reachGoal('steps_button_order');
+           }}>
              Хочу зарегистрировать команду
            </Button>
          </div>

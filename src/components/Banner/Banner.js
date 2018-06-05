@@ -71,9 +71,12 @@ class Banner extends React.PureComponent {
                 </span>
               </div>
             </p>
-            <Button onClick={() => $('body, html').animate({
-              scrollTop: $('#order').position().top,
-            }, 1000)}>
+            <Button onClick={() => {
+              $('body, html').animate({
+                scrollTop: $('#order').position().top,
+              }, 1000);
+              yaCounter49129816.reachGoal('banner_button_click');
+            }}>
               Подать заявку
             </Button>
           </Container>
