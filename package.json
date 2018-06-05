@@ -23,6 +23,7 @@
     "antd": "^3.4.3",
     "autoprefixer": "^8.4.1",
     "babel-plugin-import": "^1.7.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-stage-1": "^6.24.1",
     "bootstrap": "^4.0.0-alpha",
     "compression": "^1.6.2",

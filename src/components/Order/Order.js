@@ -233,12 +233,12 @@ class Order extends React.PureComponent {
                           name='projectState'
                           onChange={(val) => setFieldValue('projectVector', val.value)}
                           options={[
-                            { value: 'Advanced Analytics', label: 'Advanced Analytics' },
-                            { value: 'Regtech', label: 'Regtech' },
-                            { value: 'Corporate Business Solutions', label: 'Corporate Business Solutions' },
-                            { value: 'Investment Trading', label: 'Investment Trading' },
-                            { value: 'Customer Experience and Services', label: 'Customer Experience and Services' },
-                            { value: 'Non-banking Services', label: 'Non-banking Services' },
+                            { value: 'Регуляторные технологии', label: 'Регуляторные технологии' },
+                            { value: 'Инвестирование и трейдинг', label: 'Инвестирование и трейдинг' },
+                            { value: 'Продвинутая аналитика', label: 'Продвинутая аналитика' },
+                            { value: 'Небанковские сервисы', label: 'Небанковские сервисы' },
+                            { value: 'Корпоративный бизнес', label: 'Корпоративный бизнес' },
+                            { value: 'Клиентский опыт и обслуживание', label: 'Клиентский опыт и обслуживание' },
                           ]}
                         />
                         <TooltipedArea

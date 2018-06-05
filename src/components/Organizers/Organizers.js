@@ -9,9 +9,12 @@ import Container from 'components/Container';
 import Dwy from 'components/Logo/dwy.svg';
 import Raif from './raif.svg';
 import Carousel from 'nuka-carousel';
-import DwyGray from './dwyGray.svg';
 import Left from './left.svg';
 import Right from './right.svg';
+import Ufa from './logo_ufa.svg';
+import svfu from './logo_СВФУ.jpg';
+import gotech from './logo_gotech_innovation.png';
+import ai from './ai_logo.png';
 
 class Organizers extends React.PureComponent {
   state = {
@@ -22,7 +25,7 @@ class Organizers extends React.PureComponent {
   componentDidMount() {
     if($('body, html').width() <= 650) {
       this.setState({
-        slidesToShow: 2,
+        slidesToShow: 4,
       })
     }
   }
@@ -44,28 +47,24 @@ class Organizers extends React.PureComponent {
                   <Dwy className={s.dwy} />
                 </a>
               </header>
-              <section className={s.slider}>
-                <h4 className={s.label}>
-                  Партнеры
-                </h4>
-                <div className={s.carousel}>
-                  <Carousel slidesToShow={this.state.slidesToShow}
-                            slideIndex={this.state.slideIndex}
-                            slidesToScroll={1}
-                            renderTopCenterControls={({ currentSlide }) => null}
-                            renderCenterLeftControls={({ previousSlide }) => null}
-                            renderCenterRightControls={({ nextSlide }) => null}
-                            renderBottomCenterControls={() => null}
-                  >
+              {/*<section className={s.slider}>*/}
+                {/*<h4 className={s.label}>*/}
+                  {/*Партнеры*/}
+                {/*</h4>*/}
+                {/*<div className={s.carousel}>*/}
+                  {/*<Carousel slidesToShow={this.state.slidesToShow}*/}
+                            {/*slideIndex={this.state.slideIndex}*/}
+                            {/*slidesToScroll={1}*/}
+                            {/*renderTopCenterControls={({ currentSlide }) => null}*/}
+                            {/*renderCenterLeftControls={({ previousSlide }) => null}*/}
+                            {/*renderCenterRightControls={({ nextSlide }) => null}*/}
+                            {/*renderBottomCenterControls={() => null}*/}
+                  {/*>*/}
 
-                    {[1,2,3,4,5].map(item => (
-                      <div className={s.slideItem}>
-                        <Dwy className={s.dwyGray}/>
-                      </div>
-                    ))}
-                  </Carousel>
-                </div>
-              </section>
+                   {/**/}
+                  {/*</Carousel>*/}
+                {/*</div>*/}
+              {/*</section>*/}
               <div className={s.controls}>
             <span className={s.arrow} onClick={() => this.setState({
               slideIndex: this.state.slideIndex === 0 ? 0 : this.state.slideIndex - 1,
@@ -93,11 +92,26 @@ class Organizers extends React.PureComponent {
                             renderBottomCenterControls={() => null}
                   >
 
-                    {[1, 2, 3, 4, 5].map(item => (
-                      <div className={s.slideItem}>
-                        <Dwy className={s.dwyGray}/>
-                      </div>
-                    ))}
+                    <div className={s.slideItem}>
+                      <a href=" https://www.sfedu.ru/" target="_blank">
+                        <Ufa width={111}/>
+                      </a>
+                    </div>
+                    <div className={s.slideItem}>
+                      <a href="https://www.s-vfu.ru/" target="_blank">
+                        <img src={svfu} alt="" width={90}/>
+                      </a>
+                    </div>
+                    <div className={s.slideItem}>
+                      <a href=" http://www.gotech.vc/" target="_blank">
+                        <img src={gotech} alt=""/>
+                      </a>
+                    </div>
+                    <div className={s.slideItem}>
+                      <a href="http://www.ai-community.com/" target="_blank">
+                        <img src={ai} alt="" />
+                      </a>
+                    </div>
                   </Carousel>
                 </div>
               </section>
